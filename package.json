@@ -1,0 +1,30 @@
+{
+  "name": "pi-sandbox-exec",
+  "version": "0.1.0",
+  "description": "Minimal macOS sandbox-exec backend for Pi's bash tool.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-extension",
+    "sandbox-exec",
+    "seatbelt",
+    "macos"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glyzinie/pi-sandbox-exec.git"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
