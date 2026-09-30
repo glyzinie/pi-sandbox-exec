@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: macos-14
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+      - name: Set up Node.js with fnm
+        run: |
+          brew install fnm
+          fnm install 22.19.0
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - run: fnm exec --using=22.19.0 bun run check

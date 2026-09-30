@@ -19,6 +19,15 @@
   "engines": {
     "node": ">=22.19.0"
   },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check": "bun run typecheck && bun run test"
+  },
+  "files": [
+    "index.ts",
+    "src"
+  ],
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
   },
@@ -26,5 +35,10 @@
     "extensions": [
       "./index.ts"
     ]
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.99.1",
+    "@types/node": "22.19.19",
+    "typescript": "7.0.2"
   }
 }
