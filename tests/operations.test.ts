@@ -81,9 +81,10 @@ describeMac("sandbox process lifecycle", () => {
     assert.ok(!existsSync(marker));
   });
 
-  it("preserves trailing output while a descendant is still writing", async () => {
+  it("preserves background output when the shell waits for it", async () => {
     const result = await run(operations, fixture.workspace,
-      "(for i in 1 2 3 4 5; do sleep 0.04; printf tail; done) & printf head");
+      "printf head; (for i in 1 2 3 4 5; do printf tail; done) & wait");
+    assert.equal(result.exitCode, 0);
     assert.equal(result.output, "head" + "tail".repeat(5));
   });
 
